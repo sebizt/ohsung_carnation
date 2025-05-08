@@ -161,6 +161,9 @@ ul#letter-list li {
 .mosaic {
   filter: blur(5px);
   white-space: normal;
+  word-break: break-all;
+  overflow-wrap: break-word;
+  max-width: 100%;
 }
 
 .letter-title {
