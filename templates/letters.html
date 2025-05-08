@@ -66,9 +66,9 @@
       letters.forEach(l => {
         const li = document.createElement('li');
         if (userId === teacherId) {
-          li.innerHTML = `🧑🏻‍🎓 <span class="letter-title">${l.title}</span><br>🌺 ${l.content}<br>${l.create_at}`;
+          li.innerHTML = `🧑🏻‍🎓 <span class="letter-title">${l.title}</span><br>🌺 ${l.content}<br>${l.created_at}`;
         } else {
-          li.innerHTML = `🧑🏻‍🎓 <span class="letter-title">${l.title}</span><br>🌺 <span class="mosaic">${l.content}</span><br>${l.create_at}`;
+          li.innerHTML = `🧑🏻‍🎓 <span class="letter-title">${l.title}</span><br>🌺 <span class="mosaic">${l.content}</span><br>${l.created_at}`;
         }
         ul.appendChild(li);
       });
