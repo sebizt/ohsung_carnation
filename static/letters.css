@@ -158,9 +158,7 @@ ul#letter-list li {
 .title .highlight{font-size:30px;font-weight:800;color:#ff2e8b;font-family: HakgyoansimDunggeunmisoTTF-B;}
 
 .mosaic {
-  filter: blur(5px);   /* 블러(모자이크) 강도 조절 */
-  user-select: none;   /* 드래그 방지 */
-  cursor: not-allowed; /* 마우스 커서 변경 */
+  filter: blur(5px);
 }
 
 .letter-title {
