@@ -106,7 +106,7 @@ ul#letter-list li {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 16px;
-  padding: 0 4px;
+  padding: 0 15px;
 }
 
 .header-actions .home-button a,
