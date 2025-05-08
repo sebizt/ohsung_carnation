@@ -262,7 +262,9 @@ def index_page():
     if role == 'teacher':
         return render_template('main.html', role=role, teacher_id=session.get('user_id'))
     # 그 외(학생)에는 student 로만 전달
-    return render_template('main.html', role='student')
+    if role == 'student':
+        return render_template('main.html', role='student')
+    return render_template('main.html', role='guest')
 
 @app.route('/login')
 def login_page():
