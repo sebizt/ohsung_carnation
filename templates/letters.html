@@ -28,8 +28,10 @@
 
         <h1 class="title"><span class="highlight" id="teacher-name"></span> 선생님</h1>
         <p id="teacher-bio" class="teacher-bio"></p>
+        {% if role == 'student' %}
         <a href="/teachers" class="button">목록으로</a>
         <a id="write-link" class="button">편지쓰기</a>
+        {% endif %}
         <ul id="letter-list"></ul>
     </div>
   </div>
