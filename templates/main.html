@@ -36,14 +36,17 @@
     const teacherId = {{ teacher_id or 'null' }};
     document.getElementById('writeBtn').addEventListener('click', e => {
       if (role === 'teacher') {
-        e.preventDefault();
         alert('이 페이지는 학생만 접근할 수 있습니다.');
+      } else {
+        window.location.href = '/teachers';
       }
     });
     document.getElementById('readBtn').addEventListener('click', e => {
       if (role === 'student') {
         e.preventDefault();
         alert('이 페이지는 선생님만 접근할 수 있습니다.');
+      } else {
+        window.location.href = `/letters/${teacherId}`;
       }
     });
   </script>
