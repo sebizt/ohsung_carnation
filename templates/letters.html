@@ -37,7 +37,7 @@
     const teacherId = {{ teacher_id }};
     document.getElementById('write-link').href = `/write/${teacherId}`;
 
-    const role = {{ role }};
+    const role = "{{ role }}";
     if (role === 'student') {
       document.getElementById('write-link').style.display = 'inline-block';
     }
