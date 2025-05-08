@@ -297,7 +297,7 @@ def teachers_page():
 def letters_page(teacher_id):
     if 'user_id' not in session:
         return redirect(url_for('login_page'))
-    return render_template('letters.html', teacher_id=teacher_id, role=session.get('role'))
+    return render_template('letters.html', teacher_id=teacher_id, role=session.get('role'), user_id=session.get('user_id'))
 
 @app.route('/write/<int:teacher_id>')
 def write_page(teacher_id):
