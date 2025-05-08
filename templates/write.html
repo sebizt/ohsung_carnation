@@ -9,31 +9,33 @@
 </head>
 <body>
   <div class="container">
-    <div id="Header">
-      <div class="header-actions">
-        <div class="logout">
-          <a href="{{ url_for('logout') }}">
-            <i class="fa-solid fa-right-from-bracket"></i> 로그아웃
-          </a>
+    <div class="content">
+      <div id="Header">
+        <div class="header-actions">
+          <div class="logout">
+            <a href="{{ url_for('logout') }}">
+              <i class="fa-solid fa-right-from-bracket"></i> 로그아웃
+            </a>
+          </div>
         </div>
-      </div>
-
-    <h1 class="title"><span class="highlight" id="teacher-name"></span> 선생님</h1>
-    <p id="teacher-bio" class="teacher-bio"></p>
-
-    <form id="write-form">
-      <label for="title">닉네임</label>
-      <input type="text" id="title" name="title" required>
-
-      <label for="content">내용</label>
-      <textarea id="content" name="content" rows="5" required></textarea>
-
-      <div class="button-row">
-        <a id="back-link" class="button">목록으로</a>
-        <button type="submit" class="button">작성하기</button>
-        
-      </div>
-    </form>
+  
+      <h1 class="title"><span class="highlight" id="teacher-name"></span> 선생님</h1>
+      <p id="teacher-bio" class="teacher-bio"></p>
+  
+      <form id="write-form">
+        <label for="title">닉네임</label>
+        <input type="text" id="title" name="title" required>
+  
+        <label for="content">내용</label>
+        <textarea id="content" name="content" rows="5" required></textarea>
+  
+        <div class="button-row">
+          <a id="back-link" class="button">목록으로</a>
+          <button type="submit" class="button">작성하기</button>
+          
+        </div>
+      </form>
+    </div>
   </div>
 
   <script>
