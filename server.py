@@ -228,7 +228,7 @@ def get_letters(teacher_id):
             'sender_id': l[1],
             'receiver_id': l[2],
             'title': l[3],
-            'content': l[4],
+            'content': l[4].replace('\n', '<br>') if l[4] else '',
             'created_at': l[5].strftime('%Y-%m-%d %H:%M:%S')
         }
         for l in cur.fetchall()
