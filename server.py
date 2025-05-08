@@ -24,7 +24,7 @@ def send_email(to_email, code):
     smtp_user = 'sebizt711@gmail.com'
     smtp_password = 'czms avlz dhrs hywd'
     msg = MIMEText(f'인증번호: {code}')
-    msg['Subject'] = '오성고 스승의날 편지 회원가입'
+    msg['Subject'] = '오성고 스승의날 편지 인증번호'
     msg['From'] = smtp_user
     msg['To'] = to_email
     with smtplib.SMTP(smtp_server, smtp_port) as server:
