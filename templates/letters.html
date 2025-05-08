@@ -28,7 +28,7 @@
 
         <h1 class="title"><span class="highlight" id="teacher-name"></span> 선생님</h1>
         <p id="teacher-bio" class="teacher-bio"></p>
-        <a href="/teachers" class="button">목록으로</a>
+        <a id="back" href="/teachers" class="button" style="display: none;">목록으로</a>
         <a id="write-link" class="button" style="display: none;">편지쓰기</a>
         <ul id="letter-list"></ul>
     </div>
@@ -39,6 +39,7 @@
 
     const role = "{{ role }}";
     if (role === 'student') {
+      document.getElementById('back').style.display = 'inline-block';
       document.getElementById('write-link').style.display = 'inline-block';
     }
     
