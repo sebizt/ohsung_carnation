@@ -52,10 +52,9 @@ body {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 16px;
-  padding: 0 4px;
-  justify-content: flex-end
 }
 
+.header-actions .home-button a,
 .header-actions .logout a {
   display: inline-flex;
   align-items: center;
@@ -66,6 +65,7 @@ body {
   line-height: 1;
 }
 
+.header-actions .home-button i,
 .header-actions .logout i {
   font-size: 14px;
   vertical-align: middle;
@@ -74,10 +74,12 @@ body {
 
 }
 
+.header-actions .home-button a:hover,
 .header-actions .logout a:hover {
   color: #ff2e8b;
 }
 
+.header-actions .home-button a:hover i,
 .header-actions .logout a:hover i {
   color: #ff2e8b;
 }
