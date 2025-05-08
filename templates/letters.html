@@ -35,9 +35,10 @@
   </div>
   <script>
     const teacherId = {{ teacher_id }};
+    const role = "{{ role }}";
+    const user_id = {{ user_id }};
     document.getElementById('write-link').href = `/write/${teacherId}`;
 
-    const role = "{{ role }}";
     if (role === 'student') {
       document.getElementById('back').style.display = 'inline-block';
       document.getElementById('write-link').style.display = 'inline-block';
@@ -64,7 +65,11 @@
       const ul = document.getElementById('letter-list');
       letters.forEach(l => {
         const li = document.createElement('li');
-        li.innerHTML = `🧑🏻‍🎓 <span style="padding: 3px 8px; background: black; color: white; font-family: 'BMJUA';">${l.title}</span><br>🌺 <span class="mosaic">${l.content}</span>`;
+        if (user_id == teacher_id) {
+          li.innerHTML = `🧑🏻‍🎓 <span style="padding: 3px 8px; background: black; color: white; font-family: 'BMJUA';">${l.title}<br>🌺 ${l.content}</span>`;
+        } else {
+          li.innerHTML = `🧑🏻‍🎓 <span style="padding: 3px 8px; background: black; color: white; font-family: 'BMJUA';">${l.title}</span><br>🌺 <span class="mosaic">${l.content}</span>`;
+        }
         ul.appendChild(li);
       });
     })();
