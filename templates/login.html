@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>로그인하기</title>
+
+  <!-- 분리된 CSS -->
+  <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/static/login.css">
+</head>
+<body>
+
+  <div class="card">
+    <h1>로그인하기</h1>
+    <p class="sub">우당탕탕 .. ! 카네이션 대작전</p>
+
+    <form id="loginForm">
+      <input class="field" id="email" placeholder="이메일" required>
+
+      <div class="pwd-wrap">
+        <input type="password" class="field" id="password" placeholder="비밀번호" required>
+        <i class="fa-solid fa-eye-slash toggle" id="togglePwd" aria-label="비밀번호 표시/숨김 토글"></i>
+      </div>
+
+      <a href="#" class="forgot">비밀번호를 잊었나요?</a>
+
+      <button type="submit" class="btn">로그인</button>
+    </form>
+
+    <div class="footer">
+      계정이 존재하지 않나요? <a href="/signup">등록하기</a>
+    </div>
+  </div>
+
+  <!-- 분리된 JS -->
+  <script src="/static/login.js"></script>
+</body>
+</html>

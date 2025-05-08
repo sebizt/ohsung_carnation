@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>편지쓰기</title>
+  <link rel="stylesheet" href="/static/write.css">
+</head>
+<body>
+  <div class="container">
+    
+    <!-- 로그아웃 버튼 -->
+    <div class="logout">
+      <a href="{{ url_for('logout') }}">
+        <i class="fa-solid fa-right-from-bracket"></i> 로그아웃
+      </a>
+    </div>
+
+    <h1 id="teacher-name"></h1>
+    <p id="teacher-bio" class="teacher-bio"></p>
+
+    <form id="write-form">
+      <label for="title">닉네임</label>
+      <input type="text" id="title" name="title" required>
+
+      <label for="content">내용</label>
+      <textarea id="content" name="content" rows="5" required></textarea>
+
+      <div class="button-row">
+        <button type="submit" class="button">작성</button>
+        <a id="back-link" class="button">목록으로</a>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    const teacherId = {{ teacher_id }};
+    document.getElementById('back-link').href = `/letters/${teacherId}`;
+
+    (async () => {
+      const res = await fetch('/api/teachers');
+      if (!res.ok) {
+        alert('선생님 정보를 불러오는 중 오류가 발생했습니다');
+        return;
+      }
+      const teachers = await res.json();
+      const teacher = teachers.find(t => t.teacher_id === teacherId);
+      if (!teacher) {
+        alert('해당 선생님을 찾을 수 없습니다');
+        return;
+      }
+      document.getElementById('teacher-name').textContent = teacher.name;
+      document.getElementById('teacher-bio').textContent = teacher.bio;
+    })();
+
+    document.getElementById('write-form').addEventListener('submit', async e => {
+      e.preventDefault();
+      const res = await fetch('/api/letters', {
+        method: 'POST',
+        headers: {'Content-Type':'application/json'},
+        body: JSON.stringify({
+          receiver_id: teacherId,
+          title: e.target.title.value,
+          content: e.target.content.value
+        })
+      });
+      if (res.ok) {
+        window.location.href = `/letters/${teacherId}`;
+      } else {
+        const {error} = await res.json();
+        alert(error);
+      }
+    });
+  </script>
+</body>
+</html>

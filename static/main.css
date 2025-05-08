@@ -1,0 +1,82 @@
+@font-face {
+    font-family: 'BMJUA';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/BMJUA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+  
+@font-face {
+    font-family: 'HakgyoansimDunggeunmisoTTF-B';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2408-5@1.0/HakgyoansimDunggeunmisoTTF-B.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+  
+@font-face {
+    font-family: 'yg-jalnan';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+/* ───────────── 공통 reset ───────────── */
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Pretendard',sans-serif;}
+
+body{
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:flex-start;
+  background:#ffffff;
+  padding:40px 12px;
+  font-family: 'BMJUA';
+}
+
+/* ───────────── 휴대폰 모양 ───────────── */
+.phone {
+    width: 320px;
+    height: 640px;
+    background: #ffffff;
+    border-radius: 32px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    padding: 40px 24px;
+  }
+  
+.text-section {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    align-items: flex-start;
+    margin-bottom: 40px;
+}
+  
+.button-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+  
+.card {
+    width: 250px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    transition: transform 0.2s;
+}
+  
+.card img {
+    width: 100%;
+    display: block;
+}
+  
+
+.sup {font-size:18px;font-weight:500;color:#313131;margin-bottom:-5px;font-family: 'BMJUA';}
+.sup_2 {font-size:15px;font-weight:500;color:#636363;margin-bottom:2px;font-family: 'BMJUA';}
+.title{font-size:20px;font-weight:850;margin-bottom:2px;font-family: 'yg-jalnan';}
+.title .highlight{font-size:30px;font-weight:800;color:#ff2e8b;font-family: 'HakgyoansimDunggeunmisoTTF-B';}
+  
+  

@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Pretendard:wght@400;600;800&display=swap');
+
+@font-face {
+  font-family: 'BMJUA';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/BMJUA.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'yg-jalnan';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff') format('woff');
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Pretendard', sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  background: #ffffff;
+  padding: 40px 12px;
+  font-family: 'BMJUA';
+}
+
+.container {
+  width: 320px;
+  background: #fff;
+  border-radius: 32px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, .06);
+  padding: 32px 24px;
+}
+
+h1 {
+  font-family: 'yg-jalnan';
+  font-size: 24px;
+  font-weight: 800;
+  color: #ff2e8b;
+  margin-bottom: 8px;
+}
+
+.teacher-bio {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 24px;
+}
+
+.button {
+  display: inline-block;
+  margin-right: 10px;
+  margin-bottom: 20px;
+  padding: 10px 16px;
+  background: #ff2e8b;
+  color: white;
+  border-radius: 20px;
+  font-size: 14px;
+  font-family: 'BMJUA';
+  text-decoration: none;
+}
+
+.button:hover {
+  background: #e02677;
+}
+
+ul#letter-list {
+  list-style: none;
+  padding: 0;
+}
+
+ul#letter-list li {
+  padding: 16px;
+  border-radius: 16px;
+  background: #f9f9f9;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, .05);
+  margin-bottom: 16px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #333;
+}
+
+/* 로그아웃 */
+.logout {
+    text-align: right;
+    margin-bottom: 16px;
+  }
+  
+  .logout a {
+    font-size: 14px;
+    color: #888;
+    text-decoration: none;
+  }
+  
+  .logout a:hover {
+    color: #555;
+  }
+  

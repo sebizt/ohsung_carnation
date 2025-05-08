@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>우당탕탕 카네이션 대작전</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/static/main.css">
+</head>
+<body>
+  <div class="phone">
+    <div class="text-section">
+      <p class="sup">우당탕탕</p>
+      <h1 class="title"><span class="highlight">카네이션</span>대작전!</h1>
+      <p class="sup_2">스승의 날 감사 편지 이벤트</p>
+    </div>
+    <div class="button-section">
+      <!-- 감사 편지 쓰기 -->
+      <a href="/teachers" class="card" id="writeBtn">
+        <img src="/static/assets/write_letter_button.png" alt="감사 편지 쓰기">
+      </a>
+      <!-- 편지 확인하기 -->
+      <a href="/login" class="card" id="readBtn">
+        <img src="/static/assets/read_letter_button.png" alt="편지 확인하기">
+      </a>
+    </div>
+  </div>
+
+  <script>
+    const role = "{{ role }}";
+    const teacherId = {{ teacher_id or 'null' }};
+    document.getElementById('writeBtn').addEventListener('click', e => {
+      if (role === 'teacher') {
+        e.preventDefault();
+        alert('이 페이지는 학생만 접근할수있습니다');
+      }
+    });
+    document.getElementById('readBtn').addEventListener('click', e => {
+      if (role === 'teacher') {
+        e.preventDefault();
+        // teacher 전용 편지함으로 이동
+        window.location.href = `/letters/${teacherId}`;
+      }
+    });
+  </script>
+</body>
+</html>

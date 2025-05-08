@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>받은 편지</title>
+  <link rel="stylesheet" href="/static/letters.css">
+
+</head>
+<body>
+  <div class="container">
+
+    <!-- 로그아웃 버튼 이 위치로 이동 -->
+    <div class="logout">
+      <a href="{{ url_for('logout') }}">
+        <i class="fa-solid fa-right-from-bracket"></i> 로그아웃
+      </a>
+    </div>
+
+    <h1 id="teacher-name"></h1>
+    <p id="teacher-bio" class="teacher-bio"></p>
+    <a href="/teachers" class="button">목록으로</a>
+    <a id="write-link" class="button">편지쓰기</a>
+    <ul id="letter-list"></ul>
+
+  </div>
+  <script>
+    const teacherId = {{ teacher_id }};
+    document.getElementById('write-link').href = `/write/${teacherId}`;
+
+    (async () => {
+      const [tRes, lRes] = await Promise.all([
+        fetch('/api/teachers'),
+        fetch(`/api/letters/${teacherId}`)
+      ]);
+
+      if (!tRes.ok || !lRes.ok) {
+        alert('데이터를 불러오는 중 오류가 발생했습니다');
+        return;
+      }
+
+      const teachers = await tRes.json();
+      const letters = await lRes.json();
+      const teacher = teachers.find(t => t.teacher_id === teacherId);
+
+      document.getElementById('teacher-name').textContent = teacher.name;
+      document.getElementById('teacher-bio').textContent = teacher.bio;
+
+      const ul = document.getElementById('letter-list');
+      letters.forEach(l => {
+        const li = document.createElement('li');
+        li.innerHTML = `
+          ${l.title}<br>
+          ${l.content}
+        `;
+        ul.appendChild(li);
+      });
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>학생 등록하기</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;600;700&display=swap" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <!-- 분리된 CSS -->
+  <link rel="stylesheet" href="/static/signup.css">
+</head>
+<body>
+  <div class="card">
+    <h1>학생 등록하기!</h1>
+    <p class="sub-txt">• 학교 이메일로 인증 후 가입하세요</p>
+
+    <!-- 1) 인증번호 요청 -->
+    <form id="sendCodeForm">
+      <input type="email" class="field" id="email" placeholder="이메일" required>
+      <button type="button" class="btn-submit" id="sendCodeBtn">인증번호 받기</button>
+    </form>
+
+    <!-- 2) 인증 후 비밀번호 입력 및 가입 -->
+    <form id="verifyForm" style="display:none;">
+      <div class="email-display">
+        <label for="regEmail">등록할 이메일</label>
+        <input type="text" class="field" id="regEmail" readonly>
+      </div>
+      <input type="text" class="field" id="code" placeholder="인증번호" required>
+      <button type="button" id="resendCodeBtn" class="btn-resend">인증번호 재전송</button>
+      <div class="pwd-wrap">
+        <input type="password" class="field" id="password" placeholder="비밀번호" required>
+        <i class="fa-solid fa-eye-slash toggle" id="togglePwd" aria-label="비밀번호 표시/숨김"></i>
+      </div>     
+
+      <button type="submit" class="btn-submit">가입하기</button>
+    </form>
+
+    <div class="footer">
+      이미 계정이 있나요? <a href="/login">로그인 하기</a>
+    </div>
+  </div>
+  <!-- 분리된 JS -->
+  <script src="/static/signup.js"></script>
+</body>
+</html>
