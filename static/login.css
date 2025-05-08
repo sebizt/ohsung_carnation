@@ -15,11 +15,12 @@ body {
 }
 
 .card {
-  width:320px;
-  height:640px;
+  width: 320px;
+  height: 540px;
   background: #fff;
   border-radius: 32px;
-  padding: 50px 26px 40px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, .06);
+  padding: 32px 24px;
 }
 
 h1 {
