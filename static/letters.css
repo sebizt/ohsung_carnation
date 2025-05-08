@@ -159,7 +159,8 @@ ul#letter-list li {
 .title .highlight{font-size:30px;font-weight:800;color:#ff2e8b;font-family: HakgyoansimDunggeunmisoTTF-B;}
 
 .mosaic {
-  filter: blur(5px);
+  filter: blur(1px);
+  user-select: none;
   white-space: normal !important;
   word-break: break-word;
 }
