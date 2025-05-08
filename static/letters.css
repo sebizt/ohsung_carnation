@@ -107,10 +107,6 @@ ul#letter-list li {
   font-family: 'BMJUA';
   line-height: 1.5;
   color: #333;
-  white-space: normal;
-  word-break: break-all;
-  overflow-wrap: break-word;
-  max-width: 100%;
 }
 
 #Header {
@@ -159,6 +155,7 @@ ul#letter-list li {
 
 .mosaic {
   filter: blur(5px);
+  white-space: normal;
 }
 
 .letter-title {
