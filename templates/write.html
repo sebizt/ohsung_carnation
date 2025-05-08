@@ -37,7 +37,7 @@
   
         <div class="button-row">
           <a id="back-link" class="button">목록으로</a>
-          <button type="submit" class="button" style="display: none;">작성하기</button>
+          <button type="submit" class="button">작성하기</button>
         </div>
       </form>
     </div>
@@ -45,11 +45,6 @@
 
   <script>
     const teacherId = {{ teacher_id }};
-    const role = {{ role }};
-
-    if (role === 'student') {
-      document.getElementById('write-link').style.display = 'inline-block';
-    }
     document.getElementById('back-link').href = `/letters/${teacherId}`;
 
     (async () => {
