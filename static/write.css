@@ -42,6 +42,11 @@ body {
   padding: 0 15px;
 }
 
+.content{
+  height:70%;
+  padding:30px 10px;
+}
+
 .header-actions {
   display: flex;
   justify-content: space-between;
