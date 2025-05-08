@@ -64,7 +64,7 @@
       const ul = document.getElementById('letter-list');
       letters.forEach(l => {
         const li = document.createElement('li');
-        li.innerHTML = `🧑🏻‍🎓 <span style="padding: 2px 16px; background: black; color: white; font-family: 'BMJUA';">${l.title}</span><br>🌺 ${l.content} `;
+        li.innerHTML = `🌺 <span style="padding: 2px 16px; background: black; color: white; font-family: 'BMJUA';">${l.title}</span><br>${l.content} `;
         ul.appendChild(li);
       });
     })();
