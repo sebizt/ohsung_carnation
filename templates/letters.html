@@ -11,27 +11,27 @@
 </head>
 <body>
   <div class="container">
+    <div class="content">
+        <div class="header-actions">
+        <div class="home-button">
+            <a href="/" title="홈으로">
+            <i class="fa-solid fa-house"></i> 홈
+            </a>
+        </div>
+        <div class="logout">
+            <a href="{{ url_for('logout') }}">
+            <i class="fa-solid fa-right-from-bracket"></i> 로그아웃
+            </a>
+        </div>
+        </div>
+        
 
-    <div class="header-actions">
-      <div class="home-button">
-        <a href="/" title="홈으로">
-          <i class="fa-solid fa-house"></i> 홈
-        </a>
-      </div>
-      <div class="logout">
-        <a href="{{ url_for('logout') }}">
-          <i class="fa-solid fa-right-from-bracket"></i> 로그아웃
-        </a>
-      </div>
+        <h1 id="teacher-name"></h1>
+        <p id="teacher-bio" class="teacher-bio"></p>
+        <a href="/teachers" class="button">목록으로</a>
+        <a id="write-link" class="button">편지쓰기</a>
+        <ul id="letter-list"></ul>
     </div>
-    
-
-    <h1 id="teacher-name"></h1>
-    <p id="teacher-bio" class="teacher-bio"></p>
-    <a href="/teachers" class="button">목록으로</a>
-    <a id="write-link" class="button">편지쓰기</a>
-    <ul id="letter-list"></ul>
-
   </div>
   <script>
     const teacherId = {{ teacher_id }};
