@@ -12,12 +12,18 @@
     <div class="content">
       <div id="Header">
         <div class="header-actions">
-          <div class="logout">
-            <a href="{{ url_for('logout') }}">
-              <i class="fa-solid fa-right-from-bracket"></i> 로그아웃
+          <!-- 홈 아이콘 -->
+          <div class="home-button">
+            <a href="/">
+              <i class="fa-solid fa-house"></i> 홈
             </a>
           </div>
-        </div>
+        <!-- 로그아웃 버튼 -->
+        <div class="logout">
+          <a href="{{ url_for('logout') }}">
+            <i class="fa-solid fa-right-from-bracket"></i> 로그아웃
+          </a>
+        </div></div>
   
       <h1 class="title"><span class="highlight" id="teacher-name"></span> 선생님</h1>
       <p id="teacher-bio" class="teacher-bio"></p>
