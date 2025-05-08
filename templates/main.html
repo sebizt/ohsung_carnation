@@ -38,18 +38,24 @@
       if (role === 'student') {
         e.preventDefault();
         window.location.href = `/teachers`;
-      } else {
+      } else if (role === 'teacher') {
         e.preventDefault();
         alert('이 페이지는 학생만 접근할 수 있습니다.');
+      } else {
+        e.preventDefault();
+        window.location.href = `/login`;
       }
     });
     document.getElementById('readBtn').addEventListener('click', e => {
       if (role === 'teacher') {
         e.preventDefault();
         window.location.href = `/letters/${teacherId}`;
-      } else {
+      } else if (role === 'student') {
         e.preventDefault();
         alert('이 페이지는 선생님만 접근할 수 있습니다.');
+      } else {
+        e.preventDefault();
+        window.location.href = `/login`;
       }
     });
   </script>
