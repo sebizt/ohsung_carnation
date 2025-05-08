@@ -34,6 +34,7 @@ body{
 /* ───────────── 휴대폰 모양 ───────────── */
 .phone {
     width: 320px;
+    height: 540px;
     background: #fff;
     border-radius: 32px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, .06);
