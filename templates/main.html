@@ -36,6 +36,7 @@
     const teacherId = {{ teacher_id or 'null' }};
     document.getElementById('writeBtn').addEventListener('click', e => {
       if (role === 'student') {
+        e.preventDefault();
         window.location.href = '/teachers';
       } else {
         e.preventDefault();
@@ -44,6 +45,7 @@
     });
     document.getElementById('readBtn').addEventListener('click', e => {
       if (role === 'teacher') {
+        e.preventDefault();
         window.location.href = '/letters/${teacherId}';
       } else {
         e.preventDefault();
