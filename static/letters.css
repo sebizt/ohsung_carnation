@@ -153,3 +153,9 @@ ul#letter-list li {
 
 .title{font-size:20px;font-weight:850;line-height:1.25;margin-bottom:12px;font-family: 'yg-jalnan';}
 .title .highlight{font-size:30px;font-weight:800;color:#ff2e8b;font-family: HakgyoansimDunggeunmisoTTF-B;}
+
+.mosaic {
+  filter: blur(5px);   /* 블러(모자이크) 강도 조절 */
+  user-select: none;   /* 드래그 방지 */
+  cursor: not-allowed; /* 마우스 커서 변경 */
+}
