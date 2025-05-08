@@ -159,3 +159,16 @@ ul#letter-list li {
   user-select: none;   /* 드래그 방지 */
   cursor: not-allowed; /* 마우스 커서 변경 */
 }
+
+.letter-title {
+  padding: 3px 8px;
+  background: black;
+  color: white;
+  font-family: 'BMJUA';
+}
+.letter-content {
+  padding: 3px 8px; background: black; color: white; font-family: 'BMJUA';
+}
+.letter-date {
+  color: #666;
+}
