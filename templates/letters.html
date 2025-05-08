@@ -67,11 +67,11 @@
         const li = document.createElement('li');
         if (userId === teacherId) {
           li.innerHTML = `🧑🏻‍🎓 <span class="letter-title">${l.title}</span>
-          <br>🌺 ${l.content}</span>
+          <br><br>🌺 ${l.content}</span>
           <br><br><span class="letter-date">${l.created_at}</span>`;
         } else {
           li.innerHTML = `🧑🏻‍🎓 <span class="letter-title">${l.title}</span>
-          <br>🌺 <span class="mosaic">${l.content}</span>
+          <br><br>🌺 <span class="mosaic">${l.content}</span>
           <br><br><span class="letter-date">${l.created_at}</span>`;
         }
         ul.appendChild(li);
