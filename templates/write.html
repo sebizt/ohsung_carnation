@@ -5,16 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>편지쓰기</title>
   <link rel="stylesheet" href="/static/write.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
   <div class="container">
-    
-    <!-- 로그아웃 버튼 -->
-    <div class="logout">
-      <a href="{{ url_for('logout') }}">
-        <i class="fa-solid fa-right-from-bracket"></i> 로그아웃
-      </a>
-    </div>
+    <div id="Header">
+      <div class="header-actions">
+        <div class="logout">
+          <a href="{{ url_for('logout') }}">
+            <i class="fa-solid fa-right-from-bracket"></i> 로그아웃
+          </a>
+        </div>
+      </div>
+      
 
     <h1 id="teacher-name"></h1>
     <p id="teacher-bio" class="teacher-bio"></p>
@@ -27,8 +30,9 @@
       <textarea id="content" name="content" rows="5" required></textarea>
 
       <div class="button-row">
-        <button type="submit" class="button">작성</button>
         <a id="back-link" class="button">목록으로</a>
+        <button type="submit" class="button">작성하기</button>
+        
       </div>
     </form>
   </div>

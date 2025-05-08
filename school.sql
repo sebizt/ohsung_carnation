@@ -12,7 +12,8 @@ CREATE TABLE users (
   role       VARCHAR(255)
 ) ENGINE=InnoDB
   DEFAULT CHARSET=utf8mb4
-  COLLATE=utf8mb4_unicode_ci;
+  COLLATE=utf8mb4_unicode_ci
+  AUTO_INCREMENT = 101;
 
 CREATE TABLE teachers (
   teacher_id INT AUTO_INCREMENT PRIMARY KEY,

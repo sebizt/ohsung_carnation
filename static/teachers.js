@@ -61,3 +61,11 @@ function adjustFontSize(el, maxFont = 16, minFont = 12) {
     });
   });
 })();
+
+
+asdff = document.getElementById("Header");
+
+asdfff = document.getElementById("teacherList");
+asdffff = document.getElementById("content");
+
+asdfff.style.height = asdffff.offsetHeight-asdfff.offsetHeight-85 + "px";

@@ -29,6 +29,7 @@ body {
 
 .container {
   width: 320px;
+  height: 540px;
   background: #fff;
   border-radius: 32px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, .06);
@@ -66,10 +67,24 @@ h1 {
   background: #e02677;
 }
 
+
 ul#letter-list {
   list-style: none;
   padding: 0;
+  max-height: 300px;        /* 스크롤 높이 제한 */
+  overflow-y: auto;         /* 세로 스크롤 활성화 */
+  scroll-behavior: smooth;
 }
+
+ul#letter-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+ul#letter-list::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 3px;
+}
+
 
 ul#letter-list li {
   padding: 16px;
@@ -82,19 +97,44 @@ ul#letter-list li {
   color: #333;
 }
 
-/* 로그아웃 */
-.logout {
-    text-align: right;
-    margin-bottom: 16px;
-  }
-  
-  .logout a {
-    font-size: 14px;
-    color: #888;
-    text-decoration: none;
-  }
-  
-  .logout a:hover {
-    color: #555;
-  }
-  
+#Header {
+  background: #fff;
+}
+
+.header-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  padding: 0 4px;
+}
+
+.header-actions .home-button a,
+.header-actions .logout a {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 14px;
+  color: #888;
+  text-decoration: none;
+  line-height: 1;
+}
+
+.header-actions .home-button i,
+.header-actions .logout i {
+  font-size: 14px;
+  vertical-align: middle;
+  color: #888;
+  text-decoration: none;
+
+}
+
+.header-actions .home-button a:hover,
+.header-actions .logout a:hover {
+  color: #ff2e8b;
+}
+
+.header-actions .home-button a:hover i,
+.header-actions .logout a:hover i {
+  color: #ff2e8b;
+}

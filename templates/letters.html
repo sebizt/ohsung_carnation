@@ -5,17 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>받은 편지</title>
   <link rel="stylesheet" href="/static/letters.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
 
 </head>
 <body>
   <div class="container">
 
-    <!-- 로그아웃 버튼 이 위치로 이동 -->
-    <div class="logout">
-      <a href="{{ url_for('logout') }}">
-        <i class="fa-solid fa-right-from-bracket"></i> 로그아웃
-      </a>
+    <div class="header-actions">
+      <div class="home-button">
+        <a href="/" title="홈으로">
+          <i class="fa-solid fa-house"></i> 홈
+        </a>
+      </div>
+      <div class="logout">
+        <a href="{{ url_for('logout') }}">
+          <i class="fa-solid fa-right-from-bracket"></i> 로그아웃
+        </a>
+      </div>
     </div>
+    
 
     <h1 id="teacher-name"></h1>
     <p id="teacher-bio" class="teacher-bio"></p>
@@ -49,10 +58,7 @@
       const ul = document.getElementById('letter-list');
       letters.forEach(l => {
         const li = document.createElement('li');
-        li.innerHTML = `
-          ${l.title}<br>
-          ${l.content}
-        `;
+        li.innerHTML = `  👨‍🎓👩‍🎓 <strong>${l.title}</strong><br>   ${l.content} `;
         ul.appendChild(li);
       });
     })();

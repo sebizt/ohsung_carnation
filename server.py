@@ -9,7 +9,7 @@ from datetime import datetime, timedelta
 app = Flask(__name__, static_url_path='/static', static_folder='static')
 app.secret_key = 'c108e4f3c62244f9a25c132dd592f3f0'
 
-app.config['MYSQL_HOST'] = 'localhost'
+app.config['MYSQL_HOST'] = '146.56.97.153'
 app.config['MYSQL_USER'] = 'root'
 app.config['MYSQL_PASSWORD'] = 'db2025' # 개인 설정한 비밀번호로 변경할 것
 app.config['MYSQL_DB'] = 'school'
@@ -44,7 +44,7 @@ def signup():
     cur = mysql.connection.cursor()
     cur.execute('SELECT 1 FROM users WHERE email=%s', (email,))
     if cur.fetchone():
-        return jsonify({'error': '이미 사용 중인 이메일입니다.'}), 400
+        return jsonify({'error': '이미 사용 중인 이메일입니다.'}), 400                  # 나는 그루트비트 이건 정말 아니야
     code = f"{random.randint(0, 999999):06}"
     cur.execute('INSERT INTO emails (email, code) VALUES (%s,%s)', (email, code))
     mysql.connection.commit()
@@ -99,6 +99,98 @@ def login():
         return jsonify({'error': '아이디 또는 비밀번호가 올바르지 않습니다.'}), 401
     session['user_id'], session['role'] = row[0], row[2]
     return jsonify({'message': '로그인 성공'}), 200
+
+@app.route('/forgot-password')
+def forgot_password_page():
+    return render_template('forgot_password.html')
+
+@app.route('/api/forgot-password/send-code', methods=['POST'])
+def send_password_reset_code():
+    data = request.json
+    email = data.get('email')
+    if not email:
+        return jsonify({'error': '이메일 주소를 입력해주세요.'}), 400
+
+    cur = mysql.connection.cursor()
+    # Check if the email exists in the users table
+    cur.execute('SELECT 1 FROM users WHERE email=%s', (email,))
+    if not cur.fetchone():
+        return jsonify({'error': '등록되지 않은 이메일 주소입니다.'}), 404
+
+    # Generate and store the code
+    code = f"{random.randint(0, 999999):06}"
+    # Clear any old codes for this email before inserting the new one
+    cur.execute('DELETE FROM emails WHERE email=%s', (email,))
+    cur.execute('INSERT INTO emails (email, code) VALUES (%s,%s)', (email, code))
+    mysql.connection.commit()
+
+    # Send the email
+    try:
+        send_email(email, code)
+        return jsonify({'message': '인증 코드가 이메일로 발송되었습니다.'}), 200
+    except Exception as e:
+        print(f"Error sending email: {e}")
+        return jsonify({'error': '인증 코드 발송에 실패했습니다.'}), 500
+
+@app.route('/api/forgot-password/verify-code', methods=['POST'])
+def verify_password_reset_code():
+    data = request.json
+    email = data.get('email')
+    code = data.get('code')
+    if not email or not code:
+        return jsonify({'error': '이메일 주소와 인증 코드를 입력해주세요.'}), 400
+
+    cur = mysql.connection.cursor()
+    cur.execute(
+        'SELECT code, created_at FROM emails '
+        'WHERE email=%s ORDER BY created_at DESC LIMIT 1',
+        (email,)
+    )
+    row = cur.fetchone()
+
+    if not row:
+        return jsonify({'error': '인증 코드를 찾을 수 없습니다. 코드를 다시 요청해주세요.'}), 400
+
+    saved_code, created_at = row
+
+    if saved_code != code:
+        return jsonify({'error': '인증 코드가 올바르지 않습니다.'}), 400
+
+    # Check if the code is expired (e.g., 10 minutes)
+    if datetime.utcnow() - created_at > timedelta(minutes=10):
+        return jsonify({'error': '인증 코드가 만료되었습니다. 코드를 다시 요청해주세요.'}), 400
+
+    # Code is valid, return success
+    return jsonify({'message': '인증 코드가 확인되었습니다.'}), 200 # Could return a temporary token here if needed for the next step
+
+@app.route('/api/forgot-password/reset-password', methods=['POST'])
+def reset_password():
+    data = request.json
+    email = data.get('email')
+    new_password = data.get('new_password')
+    if not email or not new_password:
+        return jsonify({'error': '이메일 주소와 새 비밀번호를 입력해주세요.'}), 400
+
+    cur = mysql.connection.cursor()
+    # Verify the email exists
+    cur.execute('SELECT user_id FROM users WHERE email=%s', (email,))
+    user_row = cur.fetchone()
+    if not user_row:
+        return jsonify({'error': '사용자를 찾을 수 없습니다.'}), 404
+
+    user_id = user_row[0]
+
+    # Hash the new password
+    hashed_pw = bcrypt.generate_password_hash(new_password).decode('utf-8')
+
+    # Update the password
+    cur.execute('UPDATE users SET pw=%s WHERE user_id=%s', (hashed_pw, user_id))
+    # Optionally, clear the used code from the emails table
+    cur.execute('DELETE FROM emails WHERE email=%s', (email,))
+    mysql.connection.commit()
+
+    return jsonify({'message': '비밀번호가 성공적으로 초기화되었습니다.'}), 200
+
 
 @app.route('/api/teachers', methods=['GET'])
 def get_teachers():
@@ -210,6 +302,10 @@ def write_page(teacher_id):
 # teacher 계정 전용 리다이렉트
 @app.before_request
 def redirect_teacher():
+    # 마스터 계정은 모든 페이지 접근 허용
+    if session.get('role') == 'master':
+        return
+
     if 'user_id' in session and session.get('role') == 'teacher':
         teacher_id = session['user_id']
         path = request.path
@@ -227,5 +323,45 @@ def redirect_teacher():
            and request.endpoint != 'logout':
             return redirect(url_for('letters_page', teacher_id=teacher_id))
 
+@app.route('/admin/all_letters')
+def admin_all_letters_page():
+    if 'user_id' not in session:
+        return redirect(url_for('login_page'))
+    if session.get('role') != 'master':
+        # Optionally, redirect to an 'unauthorized' page or the index page
+        return redirect(url_for('index_page')) 
+
+    cur = mysql.connection.cursor()
+    try:
+        cur.execute('''
+            SELECT
+                l.letter_id,
+                u.email AS sender_email,
+                t.name AS receiver_name,
+                l.title,
+                l.content,
+                l.created_at
+            FROM letters l
+            JOIN users u ON l.sender_id = u.user_id
+            JOIN teachers t ON l.receiver_id = t.teacher_id
+            ORDER BY l.created_at DESC
+        ''')
+        letters_data = cur.fetchall()
+    finally:
+        cur.close()
+
+    processed_letters = []
+    for row in letters_data:
+        processed_letters.append({
+            'letter_id': row[0],
+            'sender_email': row[1],
+            'receiver_name': row[2],
+            'title': row[3],
+            'content': row[4],
+            'created_at': row[5].strftime('%Y-%m-%d %H:%M:%S') if row[5] else None
+        })
+
+    return render_template('admin_all_letters.html', letters=processed_letters)
+
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=80, debug=True)
+    app.run(host='127.0.0.1', port=80, debug=True)

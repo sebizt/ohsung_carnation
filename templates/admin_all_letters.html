@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>모든 편지 보기 (관리자)</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin_all_letters.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>모든 편지 목록</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>편지 ID</th>
+                    <th>보낸 학생 이메일</th>
+                    <th>받는 선생님 성함</th>
+                    <th>제목</th>
+                    <th>내용</th>
+                    <th>작성일</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for letter in letters %}
+                <tr>
+                    <td>{{ letter.letter_id }}</td>
+                    <td>{{ letter.sender_email }}</td>
+                    <td>{{ letter.receiver_name }}</td>
+                    <td>{{ letter.title }}</td>
+                    <td>{{ letter.content }}</td>
+                    <td>{{ letter.created_at }}</td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="6">표시할 편지가 없습니다.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <p><a href="{{ url_for('index_page') }}">메인 페이지로 돌아가기</a></p>
+    </div>
+</body>
+</html>

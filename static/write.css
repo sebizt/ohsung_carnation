@@ -35,18 +35,41 @@ body {
   padding: 32px 24px;
 }
 
-.logout {
-  text-align: right;
+.header-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: 16px;
+  padding: 0 4px;
+  justify-content: flex-end
 }
-.logout a {
+
+.header-actions .logout a {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
   font-size: 14px;
   color: #888;
   text-decoration: none;
+  line-height: 1;
 }
-.logout a:hover {
-  color: #555;
+
+.header-actions .logout i {
+  font-size: 14px;
+  vertical-align: middle;
+  color: #888;
+  text-decoration: none;
+
 }
+
+.header-actions .logout a:hover {
+  color: #ff2e8b;
+}
+
+.header-actions .logout a:hover i {
+  color: #ff2e8b;
+}
+
 
 h1 {
   font-family: 'yg-jalnan';

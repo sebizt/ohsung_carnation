@@ -96,10 +96,7 @@ h1 {
   margin-bottom: 16px;
 }
 .email-display label {
-  display: block;
-  font-size: 12px;
-  color: #666;
-  margin-bottom: 4px;
+  display: none;
 }
 
 .btn-resend {

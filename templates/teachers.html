@@ -13,23 +13,33 @@
 <body>
 
   <div class="phone">
-    <div class="content">
+    <div class="content" id="content">
 
-      <!-- 로그아웃 버튼 -->
-      <div class="logout">
-        <a href="{{ url_for('logout') }}">
-          <i class="fa-solid fa-right-from-bracket"></i> 로그아웃
-        </a>
-      </div>
 
-      <!-- 헤더 -->
-      <p class="sup">편지를 전할</p>
-      <h1 class="title"><span class="highlight">선생님</span> 선택하기!</h1>
+      <div id="Header">
+        <div class="header-actions">
+          <!-- 홈 아이콘 -->
+          <div class="home-button">
+            <a href="/">
+              <i class="fa-solid fa-house"></i> 홈
+            </a>
+          </div>
+        <!-- 로그아웃 버튼 -->
+        <div class="logout">
+          <a href="{{ url_for('logout') }}">
+            <i class="fa-solid fa-right-from-bracket"></i> 로그아웃
+          </a>
+        </div></div>
 
-      <!-- 검색 -->
-      <div class="search-wrap">
-        <input type="search" id="search" class="search-input" placeholder="선생님 이름을 검색해 보세요">
-        <i class="fa-solid fa-magnifying-glass"></i>
+        <!-- 헤더 -->
+        <p class="sup">편지를 전할</p>
+        <h1 class="title"><span class="highlight">선생님</span> 선택하기!</h1>
+
+        <!-- 검색 -->
+        <div class="search-wrap">
+          <input type="search" id="search" class="search-input" placeholder="선생님 이름을 검색해 보세요">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
       </div>
 
       <!-- 동적 생성될 선생님 리스트 -->
