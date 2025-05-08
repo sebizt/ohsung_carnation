@@ -257,9 +257,10 @@ def write_letter():
 
 @app.route('/')
 def index_page():
+    role = session.get('role')
     # teacher 계정인 경우 teacher_id 함께 전달
     if role == 'teacher':
-        return render_template('main.html', role=session.get('role'), teacher_id=session.get('user_id'))
+        return render_template('main.html', role=role, teacher_id=session.get('user_id'))
     # 그 외(학생)에는 student 로만 전달
     return render_template('main.html', role='student')
 
