@@ -37,7 +37,7 @@
     document.getElementById('writeBtn').addEventListener('click', e => {
       if (role === 'student') {
         e.preventDefault();
-        window.location.href = '/teachers';
+        window.location.href = `/teachers`;
       } else {
         e.preventDefault();
         alert('이 페이지는 학생만 접근할 수 있습니다.');
@@ -46,7 +46,7 @@
     document.getElementById('readBtn').addEventListener('click', e => {
       if (role === 'teacher') {
         e.preventDefault();
-        window.location.href = '/letters/${teacherId}';
+        window.location.href = `/letters/${teacherId}`;
       } else {
         e.preventDefault();
         alert('이 페이지는 학생만 접근할 수 있습니다.');
