@@ -10,6 +10,13 @@
   src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff') format('woff');
 }
 
+@font-face {
+  font-family: 'HakgyoansimDunggeunmisoTTF-B';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2408-5@1.0/HakgyoansimDunggeunmisoTTF-B.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -45,7 +52,6 @@ h1 {
   font-family: 'yg-jalnan';
   font-size: 24px;
   font-weight: 800;
-  color: #ff2e8b;
   margin-bottom: 8px;
 }
 
