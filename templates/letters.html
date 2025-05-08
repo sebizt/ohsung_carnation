@@ -57,8 +57,11 @@
 
       const ul = document.getElementById('letter-list');
       letters.forEach(l => {
+      const ul = document.getElementById('letter-list');
+      letters.forEach(l => {
         const li = document.createElement('li');
-        li.innerHTML = `  🌺👨‍🎓 <strong>${l.title}</strong><br>   ${l.content} `;
+        li.innerHTML = `🧑🏻‍🎓 <strong>${l.title}</strong><br>🌺 ${l.content} `;
+        ul.appendChild(li);
       });
     })();
   </script>
