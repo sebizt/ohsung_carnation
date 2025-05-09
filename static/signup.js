@@ -11,7 +11,12 @@ toggleBtn.addEventListener('click', () => {
 /* 1) 인증번호 요청 */
 async function sendCode() {
   const email = document.getElementById('email').value.trim();
+  const button = document.getElementById('sendCodeBtn'); // 버튼 요소 가져오기
   if (!email) return alert('이메일을 입력하세요');
+  button.disabled = true;
+  setTimeout(() => {
+    button.disabled = false;
+  }, 5000);
   try {
     const res = await fetch('/api/signup', {
       method: 'POST',
