@@ -1,17 +1,17 @@
 async function requestCode() {
     const email = document.getElementById('email').value;
     const messageElement = document.getElementById('request-message');
-      const button1 = document.getElementById('sendCodeBtn');
+    const button1 = document.getElementById('sendCodeBtn');
     if (!email) {
         messageElement.textContent = '이메일 주소를 입력해주세요.';
         messageElement.style.color = 'red';
         return;
     }
 
-      button1.disabled = true;
-      setTimeout(() => {
+    button1.disabled = true;
+    setTimeout(() => {
         button1.disabled = false;
-  }, 5000);
+    }, 5000);
     try {
         const response = await fetch('/api/forgot-password/send-code', {
             method: 'POST',
