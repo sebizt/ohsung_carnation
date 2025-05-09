@@ -65,6 +65,10 @@
 
     document.getElementById('write-form').addEventListener('submit', async e => {
       e.preventDefault();
+    
+      const confirmSend = confirm('편지를 보내시겠습니까?');
+      if (!confirmSend) return;
+    
       const res = await fetch('/api/letters', {
         method: 'POST',
         headers: {'Content-Type':'application/json'},
@@ -74,10 +78,11 @@
           content: e.target.content.value
         })
       });
+    
       if (res.ok) {
         window.location.href = `/letters/${teacherId}`;
       } else {
-        const {error} = await res.json();
+        const { error } = await res.json();
         alert(error);
       }
     });
