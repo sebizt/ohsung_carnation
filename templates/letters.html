@@ -65,7 +65,7 @@
       const ul = document.getElementById('letter-list');
       letters.forEach(l => {
         const li = document.createElement('li');
-        if (userId === teacherId) {
+        if (userId === teacherId || userId === l.sender_id) {
           li.innerHTML = `🧑🏻‍🎓 <span class="letter-title">${l.title}</span>
           <br><br>🌺 ${l.content}</span>
           <br><br><span class="letter-date">${l.created_at}</span>`;
