@@ -19,14 +19,17 @@ mysql = MySQL(app)
 bcrypt = Bcrypt(app)
 
 def send_email(to_email, code):
+    html_content = render_template('mail.html', code=code)
+    msg = MIMEText(html_content, 'html')  # HTML 타입 지정
+    msg['Subject'] = '오성고 스승의날 편지 인증번호'
+    msg['From'] = 'sebizt711@gmail.com'
+    msg['To'] = to_email
+
     smtp_server = 'smtp.gmail.com'
     smtp_port = 587
     smtp_user = 'sebizt711@gmail.com'
     smtp_password = 'czms avlz dhrs hywd'
-    msg = MIMEText(f'인증번호: {code}')
-    msg['Subject'] = '오성고 스승의날 편지 인증번호'
-    msg['From'] = smtp_user
-    msg['To'] = to_email
+
     with smtplib.SMTP(smtp_server, smtp_port) as server:
         server.starttls()
         server.login(smtp_user, smtp_password)
