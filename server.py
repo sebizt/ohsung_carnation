@@ -21,7 +21,7 @@ bcrypt = Bcrypt(app)
 def send_email(to_email, code):
     html_content = render_template('mail.html', code=code)
     msg = MIMEText(html_content, 'html')  # HTML 타입 지정
-    msg['Subject'] = '천안오성고등학교 우당탕탕카네이션대작전'
+    msg['Subject'] = '천안오성고등학교 우당탕탕 카네이션 대작전'
     msg['From'] = 'sebizt711@gmail.com'
     msg['To'] = to_email
 
