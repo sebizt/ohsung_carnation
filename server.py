@@ -309,7 +309,7 @@ def write_page(teacher_id):
 @app.before_request
 def redirect_teacher():
     # 마스터 계정은 모든 페이지 접근 허용
-    if session.get('role') == 'master':
+    if session.get('role') == 'admin':
         return
 
     if 'user_id' in session and session.get('role') == 'teacher':
@@ -333,7 +333,7 @@ def redirect_teacher():
 def admin_all_letters_page():
     if 'user_id' not in session:
         return redirect(url_for('login_page'))
-    if session.get('role') != 'master':
+    if session.get('role') != 'admin':
         # Optionally, redirect to an 'unauthorized' page or the index page
         return redirect(url_for('index_page')) 
 
