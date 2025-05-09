@@ -63,9 +63,12 @@
       document.getElementById('teacher-bio').textContent = teacher.bio;
 
       const ul = document.getElementById('letter-list');
+      const currentTime = new Date();
+      const revealTime = new Date('2025-05-09T18:00:00');
+      
       letters.forEach(l => {
         const li = document.createElement('li');
-        if (userId === teacherId || userId === l.sender_id) {
+        if ((userId === teacherId || userId === l.sender_id) && currentTime < revealTime) {
           li.innerHTML = `🧑🏻‍🎓 <span class="letter-title">${l.title}</span>
           <br><br>🌺 ${l.content}</span>
           <br><br><span class="letter-date">${l.created_at}</span>`;
