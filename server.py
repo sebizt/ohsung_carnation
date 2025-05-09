@@ -329,7 +329,7 @@ def redirect_teacher():
            and request.endpoint != 'logout':
             return redirect(url_for('letters_page', teacher_id=teacher_id))
 
-@app.route('/admin/all_letters')
+@app.route('/admin')
 def admin_all_letters_page():
     if 'user_id' not in session:
         return redirect(url_for('login_page'))
