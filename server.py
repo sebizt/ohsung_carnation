@@ -225,6 +225,10 @@ def get_letters(teacher_id):
         (user_id, teacher_id)
     )
 
+
+    current_time = datetime.now()
+    reveal_time = datetime(2025, 5, 15, 8, 30, 0)
+    
     letters = [
         {
             'letter_id': l[0],
@@ -233,7 +237,7 @@ def get_letters(teacher_id):
             'title': l[3],
             'content': (
                 l[4].replace('\n', '<br>') if l[4] else ''
-            ) if session.get('user_id') == teacher_id or session.get('user_id') == l[1]  else (
+            ) if (user_id == teacher_id and current_time > reveal_time) or session.get('user_id') == l[1]  else (
                 '@' * len(l[4]) if l[4] else ''
             ),
             'created_at': l[5].strftime('%Y-%m-%d %H:%M:%S')
