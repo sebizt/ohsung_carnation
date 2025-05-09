@@ -68,7 +68,7 @@
       
       letters.forEach(l => {
         const li = document.createElement('li');
-        if ((userId === teacherId || userId === l.sender_id) && currentTime < revealTime) {
+        if ((userId === teacherId || userId === l.sender_id) && currentTime > revealTime) {
           li.innerHTML = `🧑🏻‍🎓 <span class="letter-title">${l.title}</span>
           <br><br>🌺 ${l.content}</span>
           <br><br><span class="letter-date">${l.created_at}</span>`;
