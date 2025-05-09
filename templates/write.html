@@ -33,7 +33,7 @@
         <input type="text" id="title" name="title" maxlength="16" required>
   
         <label for="content">내용</label>
-        <textarea id="content" name="content" rows="8" placeholder="작성한 내용의 책임은 본인에게 있으며, 욕설·비난·비방·혐오 내용은 금지됩니다." required></textarea>
+        <textarea id="content" name="content" rows="8" placeholder="작성한 내용의 책임은 본인에게 있으며,\n욕설·비난·비방·혐오 내용은 금지됩니다." required></textarea>
   
         <div class="button-row">
           <a id="back-link" class="button">목록으로</a>
@@ -66,7 +66,7 @@
     document.getElementById('write-form').addEventListener('submit', async e => {
       e.preventDefault();
     
-      const confirmSend = confirm('편지를 보내시겠습니까?\n\n작성한 내용의 책임은 본인에게 있으며, 욕설·비난·비방·혐오 내용은 금지됩니다.\n 위반 시 게시물 삭제 및 생활 지도가 이루어질 수 있습니다.');
+      const confirmSend = confirm('편지를 보내시겠습니까?\n\n작성한 내용의 책임은 본인에게 있으며,\n욕설·비난·비방·혐오 내용은 금지됩니다.\n위반 시 게시물 삭제 및 생활 지도가 이루어질 수 있습니다.');
       if (!confirmSend) return;
     
       const res = await fetch('/api/letters', {
