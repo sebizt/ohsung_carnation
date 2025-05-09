@@ -230,7 +230,7 @@ def get_letters(teacher_id):
             'title': l[3],
             'content': (
                 l[4].replace('\n', '<br>') if l[4] else ''
-            ) if session.get('user_id') == teacher_id else (
+            ) if session.get('user_id') == teacher_id or session.get('user_id') == l[1]  else (
                 '@' * len(l[4]) if l[4] else ''
             ),
             'created_at': l[5].strftime('%Y-%m-%d %H:%M:%S')
